@@ -61,11 +61,9 @@ Enemy.prototype.turnLeft = function (angle) {
 };
 
 Enemy.prototype.move = function () {
-    var vectorX = this.target.position.x - this.position.x;
-    var vectorY = this.target.position.y - this.position.y;
     var moveTo = new THREE.Vector3(
-        0.0000001 * vectorX,
-        0.0000001 * vectorY,
+        this.position.x + 0.1,
+        this.position.y,
         this.graphic.position.z
     );
 

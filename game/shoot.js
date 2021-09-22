@@ -99,6 +99,23 @@ function player_collision()
         player1.graphic.position.y -= y - HEIGHT;
     }
 
+    var newEnemies = [];
+    for (var j = 0; j < player1.enemies.length; j++)
+    {
+        var e = player1.enemies[j];
+        var pos = player1.position;
+        if (pos.x >= e.position.x - e.size/2 && pos.x <= e.position.x + e.size/2 && pos.y >= e.position.y - e.size/2 && pos.y <= e.position.y + e.size/2)
+        {
+            player1.lifelost();
+            e.dead();
+        }
+        else
+        {
+            newEnemies.push(e);
+        }
+    }
+
+    player1.enemies = newEnemies;
 }
 
 function player_falling()
